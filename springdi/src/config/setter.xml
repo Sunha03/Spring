@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- di.setter.basic -->
+	<!-- <bean> 생성 시 <constructor-arg> 엘리먼트가 없으면 기본 생성자를 호출해서 객체를 생성함
+		 <property>에서 name 속성
+		  : <property>에서 name 속성에 정의한 dao의 첫 글자를 대문자로 정의 & set을 접두사로 추가한 메소드를 찾아 실행
+	 		ex) name="dao" >> setDao(...)
+	 -->
+	<bean id="dao" class="di.setter.basic.MemberDAO"/>
+	<bean id="insa" class="di.setter.basic.InsaImpl">
+		<property name="dao" ref="dao"/>
+	</bean>
+	
+	<!-- di.setter01 -->
+	<bean id="dice" class="di.setter01.Dice"/>
+	<bean id="player" class="di.setter01.Player">
+		<property name="d" ref="dice" />
+	</bean>
+
+	<!-- di.setter02 -->
+	<bean id="logic" class="di.setter02.LogicImpl"/>
+	<bean id="service" class="di.setter02.ServiceImpl">
+		<!-- <property name="mylogic" ref="logic" /> -->
+		<property name="mylogic" ref="logic" />
+		<constructor-arg value="장성규" />
+		<constructor-arg value="HI" />
+	</bean>
+</beans>

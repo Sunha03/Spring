@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- book.eaxm -->
+	<!-- bean(객체)를 생성할 수 있도록 정보를 정의 -->
+	<!-- app3.MyBeanStyleA mybean = new app3.MyBeanStyleA() -->
+	<!-- my bean > myBean -->
+	<bean id="speaker" class="book.exam.constructor.AppleSpeaker"/>
+	<bean id="tv" class="book.exam.constructor.SamsungTV">
+		<constructor-arg ref="speaker"/>
+	</bean>
+	
+	<!-- di.constructor.basic -->
+	<!-- 기본생성자 호출 -->
+	<bean id="mydao" class="di.constructor.basic.MemberDAO"/>
+	<!-- 매개변수가 있는 생성자 호출 -->
+	<bean id="insa" class="di.constructor.basic.InsaImpl">
+		<constructor-arg ref="mydao"/>			<!-- 매개변수 1개 -->
+	</bean>
+	
+	<!-- di.constructor01 -->
+	<bean id="dice" class="di.constructor01.Dice"/>
+	<bean id="player" class="di.constructor01.Player" >
+		<constructor-arg ref="dice" />
+	</bean>
+	
+	<!-- di.constructor02 -->
+	<bean id="logic" class="di.constructor02.LogicImpl"/>
+	<bean id="service" class="di.constructor02.ServiceImpl">
+		<constructor-arg ref="logic"/>
+		<constructor-arg value="Peng" />
+		<constructor-arg value="Hi" />
+	</bean>
+	
+	<!-- di.constructor03 -->
+	<bean id="articleDAO" class="di.constructor03.OracleArticleDAO"/>
+	<bean id="writeArticleMgr" class="di.constructor03.WriteArticleMgr">
+		<constructor-arg ref="articleDAO"/>
+	</bean>
+</beans>

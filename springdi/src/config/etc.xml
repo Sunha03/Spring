@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="collection" class="di.etc.CollectionTest">
+		<property name="list">
+			<list>
+				<value>hadoop</value>
+				<value>hive</value>
+				<value>R</value>
+				<value>android</value>
+				<value>mongodb</value>
+			</list>
+		</property>
+		<property name="map">
+			<map>
+				<entry>
+					<key>
+						<value>db</value>
+					</key>
+					<value>mongodb</value>
+				</entry>
+				<entry key="digdata1" value="hadoop" />
+				<entry key="digdata2" value="hive" />
+				<entry key="digdata3" value="R" />
+				<entry key="digdata4" value="android" />
+			</map>
+		</property>
+	</bean>
+	<bean name="con1" class="di.etc.ConstructorTest">
+		<constructor-arg value="100" index="0"/>
+		<constructor-arg value="200" index="1"/>
+	</bean>
+	<bean name="con2" class="di.etc.ConstructorTest">
+		<constructor-arg value="300" type="int"/>
+		<constructor-arg value="400" type="int"/>
+	</bean>
+	<bean name="con3" class="di.etc.ConstructorTest">
+		<constructor-arg value="500" name="num5"/>
+		<constructor-arg value="600" name="num6"/>
+	</bean>
+</beans>
